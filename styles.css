@@ -1,0 +1,204 @@
+/*
+Name: Jungeun Kim
+Date: April 5, 2026
+Section: IAB 6068
+This is the styles.css page for my portfolio.
+It is used by all pages in my portfolio to give the site a
+consistent.
+It creates a simple, intuitive style.
+*/
+
+/* 1. Reset & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* 2. Layout Containers */
+.container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+/* 3. Header Style 수정 */
+header {
+    /* 배경색을 없애거나 body와 같은 색으로 맞춥니다 */
+    background-color: transparent;
+    padding: 0; /* 불필요한 패딩 제거 */
+}
+
+header a {
+    text-decoration: none;
+    color: #333333;
+}
+
+header .container {
+    border: 3px solid #2c3e50;
+    border-radius: 10px;
+    background-color: #ffffff; /* 흰색 박스 효과는 여기서만 줍니다 */
+    box-shadow: 5px 5px 0px #2c3e50;
+    margin-top: 40px; /* 상단 여백 */
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* 4. Aside (Sidebar) Navigation */
+aside {
+    flex: 1 1 250px;
+    background-color: #fcfcfc;
+    border-right: 2px solid #2c3e50;
+    padding: 25px;
+}
+
+aside h3 {
+    color: #2980b9;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+aside ul, .sub-menu {
+    list-style: none;
+}
+
+/* 카테고리 리스트 아이템 간격 */
+.menu {
+    padding: 4px 0;
+}
+
+.sub-menu {
+    padding-left: 15px;
+    margin-top: 2px;
+}
+
+.sub-menu li {
+    padding: 2px 0;
+}
+
+/* 사이드바 링크 공통 스타일 및 호버 효과 */
+aside a {
+    display: inline-block; /* transform 적용을 위해 필요 */
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.3s ease; /* 색상과 이동 효과를 부드럽게 */
+}
+
+aside a:hover {
+    color: #2980b9;
+    font-weight: bold;
+    transform: translateX(5px); /* 오른쪽으로 5px 이동 */
+}
+
+/* 5. Main Content Area */
+main {
+    flex: 999 1 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+article, section {
+    padding: 45px 40px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+/* 6. Typography Hierarchy (제목 위계) */
+article h3 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    border-left: 5px solid #2980b9;
+    padding-left: 15px;
+}
+
+/* section 내부 h3의 a 태그 스타일 */
+section h3 a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit;       /* 부모 h3의 색상(#2c3e50)을 그대로 사용 */
+    transition: color 0.2s ease; /* 색 변화를 부드럽게 */
+}
+
+/* 마우스를 올렸을 때 강조 효과 */
+section h3 a:hover {
+    color: #2980b9;       /* 테마 색상인 파란색으로 변경 */
+    text-decoration: underline; /* 클릭 가능함을 알리기 위해 밑줄 표시 (선택 사항) */
+}
+
+section h3 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+section h3::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 1.1rem;
+    background-color: #2980b9;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+/* 7. Paragraph Styles */
+p {
+    color: #555555;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* 8. Footer 최적화 */
+footer {
+    background-color: #1a252f; /* 조금 더 깊은 다크톤으로 변경하여 가독성 높임 */
+    color: #ffffff;            /* 순백색으로 대비 강화 */
+    margin-top: 60px;          /* 본문과의 여백을 충분히 주어 구분감 명확히 */
+    padding: 50px 0;           /* 위아래 패딩을 넓게 잡아 여유로운 느낌 */
+    width: 100%;               /* 전체 너비 차지 */
+}
+
+footer .container {
+    display: flex;             /* flex를 사용하여 중앙 정렬 제어 */
+    justify-content: center;   /* 가로 중앙 정렬 */
+    align-items: center;       /* 세로 중앙 정렬 */
+    text-align: center;        /* 텍스트 자체도 중앙 정렬 */
+    margin: 0 auto;
+}
+
+footer p {
+    font-size: 0.95rem;        /* 너무 작지 않게 조절 */
+    font-weight: 400;          /* 깔끔한 기본 굵기 */
+    letter-spacing: 1px;       /* 영문 가독성을 위해 자간 살짝 넓힘 */
+    color: #ecf0f1;            /* 눈이 편안한 밝은 회백색 */
+    margin: 0;                 /* 불필요한 마진 제거 */
+}
