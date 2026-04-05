@@ -115,7 +115,6 @@ aside a:hover {
 .sub-menu {
     padding-left: 15px;  /* 들여쓰기로 계층 구분 */
     margin-top: 2px;
-    border-left: 1px solid #eee; /* 선택 사항: 시각적 가이드 라인 */
 }
 
 .sub-menu a {
