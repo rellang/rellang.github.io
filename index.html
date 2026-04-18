@@ -1,47 +1,66 @@
+/*
+* Name: Gildong Hong
+* Date: April 18, 2026
+* Section: IAB 6068
+*
+* This is the html to construct the foundation.
+* Contain contents.
+*/
+
 <!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <title>Kim Jungeun</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1><a href="index.html">Kim Jungeun</a></h1>
+<html lang="ko">
+  <head>
+    <title>World Wide Farm</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header id="status-bar" class="hidden">
+      <div>
+        <span id="level">Lv.1</span>
+      </div>
+
+      <div id="xp-wrapper">
+        <div id="xp-bar">
+            <div id="xp-fill"></div>
         </div>
+        <div id="xp-text">
+          <span id="current-xp">50</span> / <span id="max-xp">200</span>
+        </div>
+      </div>
+
+      <div class="gold">
+        <img src="images/gold.png" alt="Gold"/>
+        <span id="value">0</span>
+      </div>
     </header>
 
-    <div class="main-wrapper">
-        <aside>
-            <h3>Category</h3>
-            <ul>
-                <li class="menu">
-                    <a href="about.html">About Me</a>
-                    <ul class="sub-menu">
-                        <li><a href="favorite_games.html">Favorite Games</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </aside>
-
-        <main>
-            <article>
-                <h3>Welcome to my website</h3>
-                <p>
-                    My name is Kim Jungeun.
-                    I'm attending to Incheon National University.
-                    My student ID is 202201575.
-                </p>
-            </article>
-        </main>
+    <div id="start-screen">
+      <h1>World Wide Farm</h1>
+      <button id="start">GAME START</button>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>Last Update : April, 2026</p>
+    <div id="main-wrapper">
+      <nav id="side-menu" class="hidden">
+        <button class="menu-btn shop-btn" title="상점">
+            <img src="images/shop.png" alt="상점">
+        </button>
+
+        <button class="menu-btn inv-btn" title="인벤토리">
+          <img src="images/inventory.png" alt="인벤토리">
+        </button>
+
+        <div id="inventory-window" class="hidden">
+          <div class="inv-header">
+            <button id="close-inv">X</button>
+          </div>
+          <div id="item-grid"></div>
         </div>
-    </footer>
-</body>
+      </nav>
+
+      <div id="game-container">
+        <main id="game-map" class="blur"></main>
+      </div>
+    </div>
+  </body>
 </html>

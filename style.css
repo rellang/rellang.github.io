@@ -1,0 +1,286 @@
+/*
+* Name: Jungeun Kim
+* Date: April 18, 2026
+* Section: IAB 6068
+*
+* This is the CSS to show the game.
+* Make Quarter View.
+*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    /* 스크롤바 자체를 숨기고 기능을 막음 */
+    overflow: hidden;
+
+    /* 터치 디바이스에서 당겨서 새로고침 방지 (모바일 대응) */
+    overscroll-behavior: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+
+    z-index: 999;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0,0,0,0.3);
+}
+
+#start-screen.hidden {
+    display: none !important;
+}
+
+#start {
+    font-size: 30px;
+    border-radius: 1em;
+}
+
+#main-wrapper {
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 60px); /* 헤더 높이를 제외한 나머지 전체 */
+}
+
+#side-menu {
+    display: flex;
+    flex-direction: column; /* 아이콘들을 세로로 일렬 배치 */
+    position: relative;
+    padding: 20px 10px;
+    gap: 15px; /* 아이콘 사이 간격 */
+    background-color: rgba(0, 0, 0, 0.2); /* 반투명 배경 (선택) */
+    z-index: 100;
+}
+
+.menu-btn {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: 3px solid #6d4c41; /* 아이콘 갈색 테두리와 맞춤 */
+    border-radius: 12px;
+    background-color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.menu-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+    background-color: #f0f0f0;
+}
+
+#inventory-window {
+    position: absolute;
+    top: 0;
+    left: 85px; /* 메뉴바 너비(80px) + 약간의 간격(5px) */
+    width: 250px;
+    height: 400px;
+    background-color: #f4e1d2;
+    border: 4px solid #8d6e63;
+    border-radius: 0 15px 15px 0; /* 오른쪽만 둥글게 해서 붙은 느낌 강조 */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#game-container {
+    flex-grow: 1; /* 남은 공간을 맵이 다 차지하도록 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 1. 전체 맵 컨테이너 */
+#game-map {
+    display: grid;
+    grid-template-columns: repeat(10, 60px); /* 10열 */
+    grid-template-rows: repeat(10, 60px);    /* 10행 */
+    gap: 1px; /* 타일 사이 미세한 경계선 */
+
+    /* 쿼터뷰 변환의 핵심 */
+    transform: rotateX(60deg) rotateZ(45deg);
+    transform-style: preserve-3d;
+
+    margin: 100px auto; /* 화면 중앙 배치 */
+    width: fit-content;
+
+}
+
+#status-bar {
+    display: flex;
+    width: 100%;
+    justify-content: space-around; /* 요소 간 간격 조절 */
+    align-items: center;
+    padding: 15px;
+    background-color: #3e2723; /* 어두운 나무색 느낌 */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    position: sticky; /* 상단 고정 */
+    top: 0;
+    z-index: 100;
+}
+
+#xp-wrapper {
+    flex-grow: 1; /* 중간 영역을 최대한 차지 */
+    max-width: 400px;
+    margin: 0 20px;
+    text-align: center;
+    position: relative;
+}
+
+#xp-bar {
+    height: 18px;
+    background-color: #261b15;
+    border: 2px solid #ffcc00; /* 황금색 테두리로 강조 */
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+#xp-fill {
+    width: 0%; /* 초기 상태 */
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #8bc34a); /* 그라데이션 효과 */
+    transition: width 0.4s ease-out;
+}
+
+#xp-text {
+    font-size: 11px;
+    margin-top: 4px;
+    color: #ffcc00;
+}
+
+.stat-group {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.value { color: #ffcc00; }
+
+#inventory-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f4e1d2; /* 따뜻한 나무색 */
+  border: 5px solid #8d6e63;
+  padding: 20px;
+  z-index: 1000;
+}
+
+#item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4칸씩 배치 */
+  gap: 10px;
+}
+
+.item-slot {
+  width: 60px; height: 60px;
+  background: #fff;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  position: relative;
+}
+
+.item-slot.selected {
+  border-color: #ff9800; /* 선택된 아이템 강조 */
+  box-shadow: 0 0 10px #ff9800;
+}
+
+.item-count {
+  position: absolute;
+  bottom: 2px; right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* 2. 개별 타일 기본 스타일 */
+.tile {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    transform-style: preserve-3d;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* 지면 */
+.top {
+    background-color: #7cfc00;
+    transform: translateZ(20px); /* 큐브 높이만큼 위로 */
+}
+
+/* 앞쪽 벽 */
+.front {
+    background-color: #6d4c41;
+    height: 20px; /* 큐브 높이 */
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    bottom: 0;
+}
+
+/* 옆쪽 벽 */
+.side {
+    background-color: #4e342e;
+    width: 20px; /* 큐브 높이 */
+    transform: rotateY(90deg);
+    transform-origin: right;
+    right: 0;
+}
+
+.tile:hover .face.top {
+    cursor: pointer;
+    outline: 3px solid #ffffff;
+    outline-offset: -3px;
+    z-index: 10;
+}
+
+/* 3. 상태별 스타일 */
+.tile.buy {
+    background-color: #9ef01a;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.tile.buy:hover {
+    background-color: #ccff33;
+    transform: translateZ(5px); /* 마우스 올리면 살짝 들리는 효과 */
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+img {
+    width: 15px;
+    height: auto;
+}
