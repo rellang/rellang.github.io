@@ -1,66 +1,94 @@
-<!--/*
-* Name: Gildong Hong
-* Date: April 18, 2026
-* Section: IAB 6068
-*
-* This is the html to construct the foundation.
-* Contain contents.
-*-->
+<!-- /*
+ * Name: Jungeun Kim
+ * Date: May 8, 2026
+ * Section: IAB 6068
+ *
+ * This is the html file containing structure and content.
+ * It explains how to play and has buttons for interaction.
+ */ -->
 
 <!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <title>World Wide Farm</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
-  </head>
-  <body>
-    <header id="status-bar" class="hidden">
-      <div>
-        <span id="level">Lv.1</span>
+<html lang = "ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Dogmemory</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./index.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Dogmemory</h1>
+  </header>
+
+  <main>
+    <section id="explanation">
+      <h3>설명!</h3>
+
+      <p>
+        랜덤한 강아지 그림 카드가 생성되는 카드 뒤집기 게임 사이트입니다.
+        같은 강아지 그림 카드를 뒤집으면 점수가 올라갑니다.<br/>
+        각 난이도에 따라 타이머와 카드 개수가 정해집니다.<br/>
+        게임을 시작하면 3초간 전체 카드를 보여주고, 이후 뒷면으로 뒤집힙니다.<br/>
+        연속으로 카드를 뒤집는데 성공하면 콤보 수치가 쌓이며, 일정 수치마다 추가 점수를 얻습니다.<br/>
+        짝을 맞추지 못하면 2초씩 줄어듭니다.<br/>
+        카드 1개가 뒤집힌 상태로 Hint를 클릭하면, 해당 강아지의
+        품종을 맞추고 다른 카드의 위치를 알 수 있습니다.<br/>
+        타이머가 종료되거나 모든 카드를 뒤집으면 게임이 종료됩니다.
+
+      </p>
+    </section>
+
+    <section id="start">
+      <button id="startBtn" class="btn">시작하기</button>
+
+      <div id="difficulty-container" class="hidden">
+        <button id="easy" class="difficulty btn">Easy</button>
+        <button id="normal" class="difficulty btn">Normal</button>
+        <button id="hard" class="difficulty btn">Hard</button>
+      </div>
+    </section>
+
+    <section id="game-container" class="hidden">
+      <div id="top-side">
+        <span id="time">남은시간: 0</span>
+        <span id="curr-score">점수: 0</span>
+        <span id="curr-combo">콤보: 0</span>
+        <button id="hintBtn" class="btn">Hint</button>
       </div>
 
-      <div id="xp-wrapper">
-        <div id="xp-bar">
-            <div id="xp-fill"></div>
+      <div id="card-container"></div>
+      <div id="hint-container" class="hide">
+        <img src="" alt="quiz">
+        <p id="quiz"></p>
+        <div id="quiz-button-container">
+          <button id="O" class="quiz">O</button>
+          <button id="X" class="quiz">X</button>
         </div>
-        <div id="xp-text">
-          <span id="current-xp">50</span> / <span id="max-xp">200</span>
+      </div>
+    </section>
+
+    <section id="result-container" class="hide">
+      <span id="finalScore">최종 점수: 0</span>
+      <button id="restartBtn" class="btn">다시하기</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Data provided by <a href="https://dog.ceo/dog-api/">Dog API</p>
+  </footer>
+
+  <template id="card-template">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-back"></div>
+        <div class="card-front">
+          <img src="" alt="dog">
         </div>
       </div>
-
-      <div class="gold">
-        <img src="images/gold.png" alt="Gold"/>
-        <span id="value">0</span>
-      </div>
-    </header>
-
-    <div id="start-screen">
-      <h1>World Wide Farm</h1>
-      <button id="start">GAME START</button>
     </div>
-
-    <div id="main-wrapper">
-      <nav id="side-menu" class="hidden">
-        <button class="menu-btn shop-btn" title="상점">
-            <img src="images/shop.png" alt="상점">
-        </button>
-
-        <button class="menu-btn inv-btn" title="인벤토리">
-          <img src="images/inventory.png" alt="인벤토리">
-        </button>
-
-        <div id="inventory-window" class="hidden">
-          <div class="inv-header">
-            <button id="close-inv">X</button>
-          </div>
-          <div id="item-grid"></div>
-        </div>
-      </nav>
-
-      <div id="game-container">
-        <main id="game-map" class="blur"></main>
-      </div>
-    </div>
-  </body>
+  </template>
+</body>
 </html>

@@ -1,214 +1,301 @@
 /*
-Name: Jungeun Kim
-Date: April 5, 2026
-Section: IAB 6068
-This is the styles.css page for my portfolio.
-It is used by all pages in my portfolio to give the site a
-consistent.
-It creates a simple, intuitive style.
-*/
+ * Name: Jungeun Kim
+ * Date: May 8, 2026
+ * Section: IAB 6068
+ *
+ * This is the CSS file for decoration my site.
+ * It can manage hovering interaction and flip the card.
+ */
 
-/* 1. Reset & Global Styles */
+.btn {
+  cursor: pointer;
+  border: 4px solid #6c5a72;
+  border-radius: 15px;
+  padding: 15px 30px;
+  font-size: 30px;
+  color:white;
+  background-color: #9986b3;
+
+  transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  filter: brightness(110%);
+}
+
+.btn:active {
+  filter: brightness(80%);
+}
+
+.no-click {
+  pointer-events: none;
+  user-select: none;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Jua", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.hide {
+  display: none !important;
+}
+
+.hidden {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+html {
+    height: 100%;
+    overflow: auto;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f2f5;
-    color: #333333;
-    line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #e0dbef;
 }
 
-/* 2. Layout Containers */
-.container {
-    width: 95%;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.main-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    width: 95%;
-    max-width: 1000px;
-    margin: 20px auto;
-    background-color: #ffffff;
-    border: 2px solid #2c3e50;
-    border-radius: 10px;
-    min-height: 600px;
-    overflow: hidden;
-}
-
-/* 3. Header Style 수정 */
 header {
-    /* 배경색을 없애거나 body와 같은 색으로 맞춥니다 */
-    background-color: transparent;
-    padding: 0; /* 불필요한 패딩 제거 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  background-color: #e0dbef;
+  font-size: 30px;
 }
 
-header a {
-    text-decoration: none;
-    color: #333333;
+header > p {
+  padding: 10px;
+  border: 3px solid black;
+  border-radius: 15px;
 }
 
-header .container {
-    border: 3px solid #2c3e50;
-    border-radius: 10px;
-    background-color: #ffffff; /* 흰색 박스 효과는 여기서만 줍니다 */
-    box-shadow: 5px 5px 0px #2c3e50;
-    margin-top: 40px; /* 상단 여백 */
-    margin-bottom: 20px;
-    text-align: center;
-    padding: 30px 20px;
-}
-
-/* 4. Aside (Sidebar) Navigation 최적화 */
-
-aside {
-    flex: 1 1 250px;
-    background-color: #fcfcfc;
-    border-right: 2px solid #2c3e50;
-    padding: 25px;
-}
-
-aside h3 {
-    color: #2980b9;
-    border-bottom: 2px solid #2980b9;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-}
-
-/* 리스트 스타일 초기화 */
-aside ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* 사이드바 모든 링크 공통 스타일 */
-aside a {
-    display: inline-block;
-    text-decoration: none;
-    color: #2c3e50;
-    padding: 4px 0;
-    transition: all 0.3s ease;
-    font-weight: 400;
-}
-
-/* ★ 현재 페이지 강조 (current 클래스) ★ */
-aside a.current {
-    font-weight: 700;    /* 볼드체 */
-    color: #2980b9;      /* 강조 색상 */
-}
-
-/* 호버 시 우측 이동 효과 */
-aside a:hover {
-    color: #2980b9;
-    transform: translateX(5px);
-}
-
-/* 하위 메뉴(sub-menu) 최적화 */
-.sub-menu {
-    padding-left: 15px;  /* 들여쓰기로 계층 구분 */
-    margin-top: 2px;
-}
-
-.sub-menu a {
-    font-size: 0.95rem;  /* 하위 메뉴는 살짝 작게 */
-    color: #666;         /* 기본 상태는 조금 연하게 */
-}
-
-/* 5. Main Content Area */
 main {
-    flex: 999 1 350px;
-    display: flex;
-    flex-direction: column;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 40px;
 }
 
-article, section {
-    padding: 45px 40px;
-    border-bottom: 1px solid #e0e0e0;
+#explanation {
+  margin: 50px;
+  margin-bottom: 0px;
+  border: 5px solid #8b4513;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #356146;
+  color: white;
+  width: 800px;
+  font-size: 1.3rem;
+  visibility: visible;
+  opacity: 1;
 }
 
-section:last-child {
-    border-bottom: none;
+#start {
+  visibility: visible;
+  opacity: 1;
 }
 
-/* 6. Typography Hierarchy (제목 위계) */
-article h3 {
-    color: #2c3e50;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-    border-left: 5px solid #2980b9;
-    padding-left: 15px;
+#startBtn {
+  margin-top: 100px;
 }
 
-/* section 내부 h3의 a 태그 스타일 */
-section h3 a {
-    text-decoration: none; /* 밑줄 제거 */
-    color: inherit;       /* 부모 h3의 색상(#2c3e50)을 그대로 사용 */
-    transition: color 0.2s ease; /* 색 변화를 부드럽게 */
+#difficulty-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+
+  position: absolute;
+  left: 50%;
+  top: 55%;
+
+  transform: translate(-50%, 0);
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 5px solid #978ff9;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  z-index: 500;
 }
 
-/* 마우스를 올렸을 때 강조 효과 */
-section h3 a:hover {
-    color: #2980b9;       /* 테마 색상인 파란색으로 변경 */
-    text-decoration: underline; /* 클릭 가능함을 알리기 위해 밑줄 표시 (선택 사항) */
+#easy {
+  background-color: #6aa121;
+  border-color: #317c2c;
 }
 
-section h3 {
-    color: #2c3e50;
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
+#normal {
+  background-color: #fbb917;
+  border-color: #ffa62f;
 }
 
-section h3::before {
-    content: "";
-    display: inline-block;
-    width: 4px;
-    height: 1.1rem;
-    background-color: #2980b9;
-    margin-right: 10px;
-    border-radius: 2px;
+#hard {
+  background-color: #e55b3c;
+  border-color: #c04000;
 }
 
-/* 7. Paragraph Styles */
-p {
-    color: #555555;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    text-align: justify;
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding-bottom: 50px;
+  visibility: visible;
+  opacity: 1;
 }
 
-/* 8. Footer 최적화 */
+#top-side {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  align-items: center;
+  padding: 20px;
+  font-size: 25px;
+}
+
+#card-container {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols, 4), 1fr);
+  gap: 15px;
+  padding: 25px;
+  background-color: #966f33;
+  border: #806517 solid 5px;
+  border-radius: 10px;
+  height: auto;
+  overflow: visible;
+}
+
+.card {
+  width: 120px;
+  height: 160px;
+  perspective: 1000px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.card-inner, .card-front, .card-back {
+  width: 100%;
+  height: 100%;
+}
+
+.card-inner {
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-front {
+  background-color: white;
+  transform: rotateY(180deg);
+  z-index: 2;
+}
+
+.card-back {
+  background-color: #e0dbef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.card-front img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#hint-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-direction: column;
+
+  position: absolute;
+  left: 50%;
+  top: 20%;
+
+  transform: translate(-50%, 0);
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 5px solid #978ff9;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  z-index: 500;
+  pointer-events: auto;
+
+  font-size: 30px;
+}
+
+#hint-container img {
+  height: 400px;
+}
+
+#quiz-button-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.quiz {
+  width: 50px;
+  height: 50px;
+}
+
+#result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-direction: column;
+
+  position: absolute;
+  left: 50%;
+  top: 20%;
+
+  transform: translate(-50%, 0);
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 5px solid #978ff9;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  z-index: 500;
+
+  font-size: 60px;
+}
+
 footer {
-    background-color: #1a252f; /* 조금 더 깊은 다크톤으로 변경하여 가독성 높임 */
-    color: #ffffff;            /* 순백색으로 대비 강화 */
-    margin-top: 60px;          /* 본문과의 여백을 충분히 주어 구분감 명확히 */
-    padding: 50px 0;           /* 위아래 패딩을 넓게 잡아 여유로운 느낌 */
-    width: 100%;               /* 전체 너비 차지 */
-}
-
-footer .container {
-    display: flex;             /* flex를 사용하여 중앙 정렬 제어 */
-    justify-content: center;   /* 가로 중앙 정렬 */
-    align-items: center;       /* 세로 중앙 정렬 */
-    text-align: center;        /* 텍스트 자체도 중앙 정렬 */
-    margin: 0 auto;
-}
-
-footer p {
-    font-size: 0.95rem;        /* 너무 작지 않게 조절 */
-    font-weight: 400;          /* 깔끔한 기본 굵기 */
-    letter-spacing: 1px;       /* 영문 가독성을 위해 자간 살짝 넓힘 */
-    color: #ecf0f1;            /* 눈이 편안한 밝은 회백색 */
-    margin: 0;                 /* 불필요한 마진 제거 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  height: 5%;
+  width: 100%;
+  background-color: #e0dbef;
+  position: relative;
 }
